@@ -60,20 +60,22 @@ export default {
         name: 'Thoughts',
         post: {
           path: 'src/thoughts/{t}/index.md',
-          url: 'thoughts/{t}',
+          url: '/thoughts/{t}',
         },
         media: {
           path: 'src/thoughts/{t}/{filename}',
+          url: '/thoughts/{t}/{filename}',
         },
       },
       article: {
         name: 'Blog',
         post: {
           path: 'src/blog/{slug}/index.md',
-          url: 'blog/{slug}',
+          url: '/blog/{slug}',
         },
         media: {
           path: 'src/blog/{slug}/{filename}',
+          url: '/blog/{slug}/filename',
         },
       },
     },
