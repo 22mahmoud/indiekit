@@ -1,0 +1,23 @@
+services:
+  indiekit:
+    container_name: indiekit
+    image: getindiekit/indiekit
+    restart: always
+    build: .
+    environment:
+      - MONGO_URL=mongodb://${MONGO_INITDB_ROOT_USERNAME:-mongo}:${MONGO_INITDB_ROOT_PASSWORD}@mongo
+      - PASSWORD_SECRET=${PASSWORD_SECRET}
+      - SECRET=${SECRET}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - MASTODON_ACCESS_TOKEN=${MASTODON_ACCESS_TOKEN}
+  mongo:
+    container_name: mongo
+    image: mongo:4
+    restart: always
+    volumes:
+      - mongo:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME:-mongo}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+volumes:
+  mongo:

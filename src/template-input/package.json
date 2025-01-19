@@ -1,0 +1,7 @@
+{
+  "name": "@maw.sh/template-input",
+  "main": "index.js",
+  "type": "module",
+  "private": true,
+  "license": "MIT"
+}
