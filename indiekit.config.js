@@ -1,81 +1,92 @@
-import * as dotenv from 'dotenv';
+import * as dotenv from "dotenv";
 dotenv.config();
 
-import { getPostTemplate } from './src/post-template.js';
+import { getPostTemplate } from "./src/post-template.js";
 
 export default {
   plugins: [
-    '@indiekit/store-github',
-    '@indiekit/syndicator-mastodon',
-    '@maw.sh/keywords-input',
-    '@maw.sh/template-input',
+    "@indiekit/store-github",
+    "@indiekit/syndicator-mastodon",
+    "@maw.sh/keywords-input",
+    "@maw.sh/template-input",
   ],
-  '@indiekit/store-file-system': {
-    directory: '/blog',
+  "@indiekit/store-file-system": {
+    directory: "/blog",
   },
-  '@indiekit/store-github': {
-    user: '22mahmoud',
-    repo: 'maw.sh',
-    branch: 'master',
+  "@indiekit/store-github": {
+    user: "22mahmoud",
+    repo: "maw.sh",
+    branch: "master",
   },
-  '@indiekit/syndicator-mastodon': {
-    url: 'https://fosstodon.org',
-    user: '22mahmoud',
+  "@indiekit/syndicator-mastodon": {
+    url: "https://fosstodon.org",
+    user: "22mahmoud",
   },
-  '@indiekit/post-type-article': {
+  "@indiekit/post-type-article": {
     fields: {
       name: { required: true },
       template: {
-        value: 'blog',
+        value: "blog",
       },
       summary: {},
       content: { required: true },
       category: {},
       keywords: {},
       geo: {},
-      'post-status': {},
+      "post-status": {},
       published: { required: true },
       visibility: {},
     },
   },
-  '@indiekit/post-type-note': {
+  "@indiekit/post-type-note": {
     fields: {
       content: { required: true },
       template: {
-        value: 'thought',
+        value: "thought",
       },
       category: {},
       keywords: {},
       geo: {},
-      'post-status': {},
+      "post-status": {},
       published: { required: true },
       visibility: {},
     },
   },
   publication: {
-    me: 'https://maw.sh',
+    me: "https://maw.sh",
     postTemplate: getPostTemplate,
     postTypes: {
-      note: {
-        name: 'Thoughts',
+      photo: {
+        name: "Photos",
         post: {
-          path: 'src/thoughts/{t}/index.md',
-          url: '/thoughts/{t}',
+          path: "src/photos/{yyyy}-{MM}-{dd}-{slug}.md",
+          url: "/photos/{yyyy}/{MM}/{slug}",
         },
         media: {
-          path: 'src/thoughts/{t}/{filename}',
-          url: '/thoughts/{t}/{filename}',
+          path: "src/photos/{filename}",
+          url: "/photos/{filename}",
+        },
+      },
+      note: {
+        name: "Thoughts",
+        post: {
+          path: "src/thoughts/{t}/index.md",
+          url: "/thoughts/{t}",
+        },
+        media: {
+          path: "src/thoughts/{t}/{filename}",
+          url: "/thoughts/{t}/{filename}",
         },
       },
       article: {
-        name: 'Blog',
+        name: "Blog",
         post: {
-          path: 'src/blog/{slug}/index.md',
-          url: '/blog/{slug}',
+          path: "src/blog/{slug}/index.md",
+          url: "/blog/{slug}",
         },
         media: {
-          path: 'src/blog/{slug}/{filename}',
-          url: '/blog/{slug}/filename',
+          path: "src/blog/{slug}/{filename}",
+          url: "/blog/{slug}/filename",
         },
       },
     },
