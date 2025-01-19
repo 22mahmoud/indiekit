@@ -3,12 +3,10 @@ services:
     container_name: indiekit
     image: getindiekit/indiekit
     restart: always
-    ports:
-      - 3000:3000
     build: .
     environment:
       - MONGO_URL=mongodb://${MONGO_INITDB_ROOT_USERNAME:-mongo}:${MONGO_INITDB_ROOT_PASSWORD}@mongo
-      - 'PASSWORD_SECRET=${PASSWORD_SECRET}'
+      - PASSWORD_SECRET=${PASSWORD_SECRET}
       - SECRET=${SECRET}
       - GITHUB_TOKEN=${GITHUB_TOKEN}
       - MASTODON_ACCESS_TOKEN=${MASTODON_ACCESS_TOKEN}
